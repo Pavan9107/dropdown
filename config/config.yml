@@ -1,0 +1,8 @@
+salesforce:
+  base_url: "https://login.salesforce.com"
+  username: "2019pavan@force.com"
+  password: "Kusuma@2025"
+
+browser:
+  type: "chrome"
+  implicit_wait: 10

@@ -10,6 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+driver.implicitly_wait(3)
 driver.get("https://www.amazon.in/")
 dropdown_element = driver.find_element(By.ID, "searchDropdownBox")
 dropdown = Select(dropdown_element)
@@ -32,7 +33,19 @@ for suggestion in suggestions:
         break
 
 
+wait.until(EC.visibility_of_element_located((By.XPATH, "//a[h2/span[contains(text(),'Python All-in-One for Dummies')]]")))
 
+
+book_link = driver.find_element(By.XPATH, "//a[h2/span[contains(text(),'Python All-in-One for Dummies')]]")
+print("Book URL:", book_link.get_attribute("href"))
+book_link.click()
+
+
+windows = driver.window_handles
+print("Windows:", windows)
+
+driver.switch_to.window(windows[1])
+print(driver.current_url)
 
 
 
